@@ -1,10 +1,36 @@
 declare const $:any;
+declare const jQuery:any;
 
 // 常量
 const NAME_REG = /^[\u4E00-\u9FA5]{2,4}$/
 const PHONE_REG = /^1(3|4|5|7|8)\d{9}$/
 const EMAIL_REG = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
 const CARD_REG = /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[XxYy])$)$/;
+
+const DELAY = 2000;
+// 校验类型
+const PROOF_TYPE = [
+  {
+    label: '任意类型',
+    value: ''
+  },
+  {
+    label: '手机号',
+    value: 'phone'
+  },
+  {
+    label: '邮箱',
+    value: 'email'
+  },
+  {
+    label: '姓名',
+    value: 'name'
+  },
+  {
+    label: '身份证',
+    value: 'card'
+  }
+]
 
 const unit = {
   // 初始化设置size
@@ -31,6 +57,15 @@ const unit = {
     html.style.fontSize = innerWidth / designWidth * remToPx * (defaultFontSize / 50) + "px";
     head = null;
     html = null;
+  },
+
+  // 判空正则
+  IsEmpty: function (str) {
+    if (str === null || str === '' || str === undefined) {
+      return false;
+    } else {
+      return true;
+    }
   },
 
   // 用户名验证
@@ -76,6 +111,8 @@ const sky = {
   // 提交
   refer: () => {
     let name = 'putIn';
+    let type = 1;
+
     $('#app').click(function (ev) {
       let event = ev || window.event;
 
@@ -83,12 +120,219 @@ const sky = {
       let className = target.className;
       if (className.indexOf(name) !== -1) {
         let form = $(target).parent().siblings('.refer');
-        let input = form.find('input');
+        let title = $(target).attr('data-title');
 
-        let arr = form.serializeArray();
-        console.log(arr[1].value);
-        let isName = unit.IsCard(arr[1].value);
-        console.log(isName);
+        let refs = sky.ref(form);
+        let arr = form.sky_serializeArray();
+
+        let bool = true;
+        let type = 1;
+        // 所有
+        let str = '';
+
+        for(let item of arr) {
+          if (bool === true) {
+            for (let ref of refs) {
+              if (item.name === ref.name && ref.must === true) {
+                if (item.value === '') {
+                  bool = false;
+                  type = 3;
+                  // 类型判断
+                  str = item.name;
+                  break;
+                } else {
+                  if (unit.IsEmpty(ref.proof)) {
+                    // 进行正则校验
+                    switch (ref.proof) {
+                      case 'name':
+                        bool = unit.IsName(item.value);
+                        str = item.name;
+                        type = 2;
+                        break;
+                      case 'phone':
+                        bool = unit.IsPhone(item.value);
+                        str = item.name;
+                        type = 2;
+                        break;
+                      case 'email':
+                        bool = unit.IsEmpty(item.value);
+                        str = item.name;
+                        type = 2;
+                        break;
+                      case 'card':
+                        bool = unit.IsCard(item.value);
+                        str = item.name;
+                        type = 2;
+                        break;
+                      default:
+                        break;
+                    }
+                  }
+                }
+                if (bool === false) {
+                  break;
+                }
+              }
+              else if (item.name === ref.name) {
+                // 不是必填，又没有填写的时候走的逻辑
+                if (item.value === '') {
+                  // 类型判断
+                  break;
+                } else {
+                  if (unit.IsEmpty(ref.proof)) {
+                    // 进行正则校验
+                    switch (ref.proof) {
+                      case 'name':
+                        bool = unit.IsName(item.value);
+                        str = item.name;
+                        type = 2;
+                        break;
+                      case 'phone':
+                        bool = unit.IsPhone(item.value);
+                        str = item.name;
+                        type = 2;
+                        break;
+                      case 'email':
+                        bool = unit.IsEmpty(item.value);
+                        str = item.name;
+                        type = 2;
+                        break;
+                      case 'card':
+                        bool = unit.IsCard(item.value);
+                        str = item.name;
+                        type = 2;
+                        break;
+                      default:
+                        break;
+                    }
+                  }
+                }
+                if (bool === false) {
+                  break;
+                }
+              }
+            }
+            if (bool === false) {
+              break
+            }
+          }
+        }
+
+        // 进行提醒
+        if (bool === false) {
+          sky.pointOut(str, type, title);
+        } else {
+          // 这里进行表单数据的ajax请求
+          let $node = $('#none');
+          let customId = $node.attr('data-custom-id');
+          let viewId = $node.attr('data-view-id');
+          let formId = $(target).attr('data-form-id');
+
+
+          let url = '/getForm';
+          let params = {
+            customId: customId,
+            viewId: viewId,
+            formId: formId,
+            forms: arr
+          }
+
+          console.log(params);
+          // $.ajax({
+          //   method: 'POST',
+          //   data: params,
+          //   dataType: 'JSON',
+          //   success: function (data) {
+          //     console.log(data);
+          //   },
+          //   error: function (err) {
+          //     console.log(err);
+          //   }
+          // })
+
+          sky.pointOut(str, 1, title);
+        }
+      }
+    })
+  },
+
+  // 返回不能为空的label
+  ref: (form) => {
+    let $refs = $(form).find('.ref');
+    let a = [];
+    $refs.each(function (index, item) {
+      let temp = {};
+      let name = $(item).find('input').attr("name");
+      let proof = $(item).find('input').attr("data-proof");
+
+      if ($(item).hasClass('xinghao')) {
+        temp = {name: name, proof: proof, must: true}
+      } else {
+        temp = {name: name, proof: proof, must: false}
+      }
+      a.push(temp);
+    });
+    return a;
+  },
+
+  // 提示函数，弹出模态框提示输入问题
+  pointOut: (str: string ,type?: number, title?: string, ) => {
+    // 1成功，2警告，3错误，默认警告
+
+    let icon = `icon-jinggao`;
+    let tip = `请输入正确的${str}`;
+
+    switch (type) {
+      case 1:
+        icon = `icon-wancheng-copy`;
+        tip = `提交成功`;
+        break;
+      case 2:
+        icon = `icon-jinggao`;
+        tip = `请输入正确的${str}`;
+        break;
+      case 3:
+        icon = `icon-cuowu`;
+        tip = `${str}为必填项`;
+        break;
+      default:
+        icon = `icon-jinggao`;
+        tip = `请输入正确的${str}`
+    }
+
+    // html片段
+    let html = `<div class="warn">
+        <div class="warn-header">
+            <div class="warn-title">${title}</div>
+            <div class="warn-close">
+                <i class="iconfont icon-guanbi"></i>
+            </div>
+        </div>
+        <div class="warn-body">
+            <div class="icon iconfont ${icon}"></div>
+        </div>
+        <div class="warn-footer">${tip}</div>
+    </div>`;
+
+    let $point = $('#point');
+
+    $point.html(html);
+    $point.fadeIn();
+
+    let timer = setTimeout(function () {
+      $point.fadeOut();
+      clearTimeout(timer);
+    }, DELAY)
+  },
+
+  // 关闭函数
+  pointClose() {
+    let $point = $('#point');
+    $point.click(function (ev) {
+      let event = ev || window.event;
+      let target = event.target || event.srcElement;
+      if (target.className.indexOf('icon-guanbi') !== -1) {
+        $point.fadeOut();
       }
     })
   }
@@ -100,7 +344,6 @@ window.onload = function () {
   /*
 *  在此调用自己的方法
 * */
-// debugger
 //目前设计稿750， 根 font-size 100px  尺寸 除以100  单位：rem
   unit.ResizeRemToPxBase(750, 100);
 }
@@ -108,6 +351,28 @@ window.onload = function () {
 // 自定义dom方法
 sky.refer();
 
+// 弹窗方法
+sky.pointClose();
+
 window.onresize = function() {
   unit.ResizeRemToPxBase(750, 100);
 }
+
+
+// jquery方法的扩展
+
+$.fn.sky_serializeArray = function () {
+  let a = this.serializeArray();
+  let $radio = $('input[type=radio],input[type=checkbox]', this);
+  let temp = {};
+  $.each($radio, function () {
+    if (!temp.hasOwnProperty(this.name)) {
+      if ($("input[name='" + this.name + "']:checked").length == 0) {
+        temp[this.name] = "";
+        a.push({name: this.name, value: ""});
+      }
+    }
+  });
+  return a;
+  
+};

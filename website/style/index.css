@@ -222,6 +222,7 @@ body {
   min-height: 40px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   overflow: hidden;
+  position: relative;
 }
 .xinghao {
   position: relative;
@@ -234,40 +235,28 @@ body {
   top: 13px;
 }
 .label-item {
+  position: absolute;
+  left: 0;
+  top: 0;
   padding-left: 20px;
   color: #000;
-  font-size: 0.28rem;
+  font-size: 14px;
   display: inline-block;
   width: 70px;
   line-height: 40px;
-}
-.text-item {
-  outline: none;
-  border-radius: 5px;
-  height: 36px;
-  box-sizing: border-box;
-  width: 155px;
-  min-width: 60%;
-  padding: 4px 6px;
-  font-size: 0.28rem;
-  line-height: 36px;
-  vertical-align: middle;
-  background-color: transparent;
-  color: #000000;
-  border: none;
 }
 .form-radio {
   display: inline-block;
   width: 155px;
   min-width: 60%;
   height: auto;
-  font-size: 0.28px;
+  font-size: 14px;
   vertical-align: middle;
   background-color: transparent;
   border: none;
   color: #333333;
   line-height: 25px;
-  margin: 5px 0;
+  margin: 5px 0 0 70px;
   padding: 5px;
 }
 .form-radio .radio {
@@ -288,5 +277,101 @@ body {
 .form-radio .radio span {
   word-break: break-all;
   margin-left: 25px;
+}
+.text-item {
+  outline: none;
+  border-radius: 5px;
+  height: 36px;
+  margin-left: 70px;
+  box-sizing: border-box;
+  width: 155px;
+  min-width: 60%;
+  padding: 4px 6px;
+  font-size: 0.28rem;
+  line-height: 36px;
+  vertical-align: middle;
+  background-color: transparent;
+  color: #000000;
+  border: none;
+}
+.point {
+  display: none;
+  position: fixed;
+  width: 6rem;
+  min-height: 3.5rem;
+  background-color: #eee;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+}
+.point .warn {
+  width: 100%;
+  height: 100%;
+}
+.point .warn-header {
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.32rem;
+  position: relative;
+}
+.point .warn-header .warn-title {
+  text-align: center;
+  font-size: 0.32rem;
+}
+.point .warn-header .warn-close {
+  position: absolute;
+  right: 0.3rem;
+  top: 50%;
+  width: 0.66rem;
+  height: 0.66rem;
+  transform: translateY(-50%);
+  line-height: 0.6rem;
+  text-align: center;
+  border-radius: 50%;
+}
+.point .warn-header .warn-close i {
+  display: inline-block;
+  font-size: 0.32rem;
+  width: 90%;
+  height: 90%;
+}
+.point .warn-header .warn-close:hover {
+  background-color: #ccc;
+}
+.point .warn-body {
+  width: 100%;
+  height: 1.5rem;
+  margin: 0 auto;
+  line-height: 1.5rem;
+  text-align: center;
+}
+.point .warn-body .icon {
+  font-size: 1.3rem;
+}
+.point .warn-body .icon-wancheng-copy {
+  color: #06c293;
+}
+.point .warn-body .icon-cuowu {
+  color: red;
+}
+.point .warn-body .icon-jinggao {
+  color: #FFD700;
+}
+.point .warn-footer {
+  text-align: center;
+}
+.point .footer-close {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0.3rem;
+}
+.point .footer-close i {
+  position: relative;
+  top: 100%;
+}
+#none {
+  display: none;
 }
 /*# sourceMappingURL=index.css.map */
