@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a3762cf-00c2-4665-b154-151f492bc40d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/website/js/sky.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/js/jquery-3.1.0.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/js/sky.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/js/sky.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/website/js/unit.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/js/unit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/js/unit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/website/js/unit.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/style/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/style/index.css" afterDir="false" />
@@ -23,7 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3364929">
+    <splitter split-orientation="horizontal" split-proportion="0.43601894">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
@@ -43,11 +43,8 @@
           <file leaf-file-name="jquery-3.3.1.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/website/js/jquery-3.3.1.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="14">
+                <state relative-caret-position="178122">
                   <caret line="8494" column="16" selection-start-line="8494" selection-start-column="2" selection-end-line="8494" selection-end-column="16" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -55,8 +52,8 @@
           <file leaf-file-name="unit.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/website/js/unit.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="71" column="23" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+                <state relative-caret-position="5754">
+                  <caret line="275" column="9" selection-start-line="275" selection-start-column="9" selection-end-line="275" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
@@ -64,12 +61,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="unit.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/website/js/unit.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="560">
-                  <caret line="276" column="24" selection-start-line="276" selection-start-column="24" selection-end-line="276" selection-end-column="24" />
+                <state relative-caret-position="287">
+                  <caret line="274" column="30" lean-forward="true" selection-start-line="274" selection-start-column="30" selection-end-line="274" selection-end-column="30" />
                 </state>
               </provider>
             </entry>
@@ -77,8 +74,8 @@
           <file leaf-file-name="index.less" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/website/style/index.less">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="695">
-                  <caret line="423" column="16" selection-start-line="423" selection-start-column="16" selection-end-line="423" selection-end-column="16" />
+                <state relative-caret-position="6804">
+                  <caret line="324" column="1" lean-forward="true" selection-start-line="324" selection-start-column="1" selection-end-line="324" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -98,13 +95,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>font-s</find>
-      <find>innerWidth</find>
-      <find>background-s</find>
-      <find>px</find>
-      <find>font-size</find>
-      <find>.wa</find>
-      <find>order_reserve_btn</find>
       <find>serialize</find>
       <find>pointClose</find>
       <find>rsubmittable</find>
@@ -126,8 +116,15 @@
       <find>debu</find>
       <find>console</find>
       <find>ref</find>
-      <find>conso</find>
+      <find>customId</find>
+      <find>IsEmpty</find>
+      <find>text-it</find>
+      <find>px</find>
+      <find>.code</find>
       <find>pointOut</find>
+      <find>sessionStorage</find>
+      <find>title</find>
+      <find>conso</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -173,8 +170,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="716" />
-    <option name="y" value="73" />
+    <option name="x" value="481" />
+    <option name="y" value="111" />
     <option name="width" value="1144" />
     <option name="height" value="917" />
   </component>
@@ -186,6 +183,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,7 +212,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -264,28 +261,31 @@
       <workItem from="1544499237634" duration="2124000" />
       <workItem from="1544519357155" duration="17725000" />
       <workItem from="1545011109934" duration="559000" />
-      <workItem from="1545012549314" duration="38856000" />
+      <workItem from="1545012549314" duration="43732000" />
+      <workItem from="1545182707064" duration="6307000" />
+      <workItem from="1545199642968" duration="1203000" />
+      <workItem from="1545204942550" duration="1317000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73539000" />
+    <option name="totallyTimeSpent" value="87242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="11" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12083333" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.07083333" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32980973" />
       <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32961586" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -297,17 +297,51 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="D:/zftdev/ZhiFuTui/website/js/demo.js.map" />
-        <option value="$PROJECT_DIR$/website/js/sky.js" />
-      </list>
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/website/style/index.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6804">
+          <caret line="324" column="1" lean-forward="true" selection-start-line="324" selection-start-column="1" selection-end-line="324" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/js/jquery-3.3.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178374">
+          <caret line="8494" column="16" selection-start-line="8494" selection-start-column="2" selection-end-line="8494" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/js/unit.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4851">
+          <caret line="231" column="31" lean-forward="true" selection-start-line="231" selection-start-column="31" selection-end-line="231" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/style/index.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8673">
+          <caret line="413" lean-forward="true" selection-start-line="413" selection-end-line="413" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/style/index.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5754">
@@ -487,20 +521,11 @@
     <entry file="file://$PROJECT_DIR$/js/unit.ts" />
     <entry file="file://$PROJECT_DIR$/style/index.less" />
     <entry file="file://$PROJECT_DIR$/website/js/confi.js" />
-    <entry file="file://$PROJECT_DIR$/website/js/jquery-3.1.0.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="3" column="7803" selection-start-line="3" selection-start-column="7794" selection-end-line="3" selection-end-column="7803" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website/js/jquery-3.1.0.min.js" />
     <entry file="file://$PROJECT_DIR$/website/js/jquery-3.3.1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
+        <state relative-caret-position="178122">
           <caret line="8494" column="16" selection-start-line="8494" selection-start-column="2" selection-end-line="8494" selection-end-column="16" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -511,17 +536,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/js/sky.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="29" column="18" lean-forward="true" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website/js/sky.ts" />
     <entry file="file://$PROJECT_DIR$/website/style/index.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="423" column="16" selection-start-line="423" selection-start-column="16" selection-end-line="423" selection-end-column="16" />
+        <state relative-caret-position="6804">
+          <caret line="324" column="1" lean-forward="true" selection-start-line="324" selection-start-column="1" selection-end-line="324" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -539,8 +558,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/js/unit.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="276" column="24" selection-start-line="276" selection-start-column="24" selection-end-line="276" selection-end-column="24" />
+        <state relative-caret-position="287">
+          <caret line="274" column="30" lean-forward="true" selection-start-line="274" selection-start-column="30" selection-end-line="274" selection-end-column="30" />
         </state>
       </provider>
     </entry>

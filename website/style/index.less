@@ -1,4 +1,4 @@
-
+@deColor: #4C9AFC;
 * {
   padding: 0;
   margin: 0;
@@ -55,7 +55,6 @@ button {
 body {
   line-height: 1;
   overflow-x: hidden;
-  //max-width: 640px;
   margin: 0 auto;
   color: #333;
   -webkit-overflow-scrolling: touch;
@@ -63,10 +62,8 @@ body {
   font-size: 0.28rem;
 }
 
-
 // web.html文件样式
 .main {
-  //max-width: 640px;
   min-width: 300px;
   max-width: 640px;
   width: 100%;
@@ -92,8 +89,8 @@ body {
   font-size: .32rem;
   text-align: center;
   margin: 0 auto;
-  height: 45px;
-  line-height: 45px;
+  height: .9rem;
+  line-height: .9rem;
   font-weight: bold;
   border-bottom: 1px solid #666;
   background-color: #2F3533;
@@ -104,7 +101,7 @@ body {
   width: 100%;
   min-height: 100%;
   background-repeat: repeat;
-  background-position: 0px 0px;
+  background-position: 0 0;
   background-size: 100%;
   *zoom: 1;
 }
@@ -142,7 +139,7 @@ body {
 .otext {
   width: 100%;
   height: 100%;
-  padding: 2px 4px;
+  padding: .04rem .08rem;
   text-align: center;
   box-sizing: border-box;
   font-size: .32rem;
@@ -176,14 +173,14 @@ body {
     background-color: rgba(255,255,255,1);
     border-bottom: 1px solid rgba(0,0,0,0.2);
     background-color: #ffffff;
-    height: 50px;
+    height: 1rem;
     border-left-style: none;
     border-right-style: none;
   }
   .customName {
-    width: 220px;
-    height: 50px;
-    line-height: 50px;
+    width: 4.4rem;
+    height: 1rem;
+    line-height: 1rem;
     text-align: center;
     font-size: .32rem;
     margin: 0 auto;
@@ -193,41 +190,41 @@ body {
     font-size: 0.2rem;
     color: #666;
     width: 100%;
-    line-height: 25px;
+    line-height: .5rem;
     word-break: break-all;
     word-wrap: break-word;
     display: block;
-    margin-bottom: 5px;
-    padding-left: 10px;
-    padding-top: 6px;
+    margin-bottom: .1rem;
+    padding-left: .2rem;
+    padding-top: .12rem;
   }
 
   .order_reserve_btn {
     text-align: center;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: .4rem;
+    margin-top: .4rem;
     .button {
       background-color: #4C9AFC;
-      border-radius: 5px;
-      width: 290px;
-      height: 40px;
+      border-radius: .1rem;
+      width: 5.8rem;
+      height: .8rem;
       font-size: 0.36rem;
       font-weight: bold;
       color: #ffffff;
     }
     button {
-      width: 150px;
-      height: 30px;
+      width: 3rem;
+      height: .6rem;
+      line-height: .6rem;
       background: #e6e0d5;
       border: none;
-      border-radius: 5px;
+      border-radius: .1rem;
       outline: none;
       display: inline-block;
       padding: 0;
       margin: 0;
       font-size: 0.24rem;
       color: #fff;
-      line-height: 30px;
       text-align: center;
       vertical-align: middle;
       cursor: pointer;
@@ -235,19 +232,19 @@ body {
   }
 
   .user_info {
-    margin: 20px 0;
+    margin: .4rem 0;
   }
 
   .refer {
     border-color: transparent;
-    padding: 0 15px;
+    padding: 0 .3rem;
     display: block;
     background-color: rgba(255, 255, 255, 1);
     position: relative;
-    border-radius: 4px;
+    border-radius: .08rem;
 
     .ref {
-      min-height: 40px;
+      min-height: .8rem;
       border-bottom: 1px solid rgba(0,0,0,0.2);
       overflow: hidden;
       position: relative;
@@ -262,70 +259,106 @@ body {
   content: "*";
   color: red;
   position: absolute;
-  left: 8px;
-  top: 13px;
+  left: .16rem;
+  top: .26rem;
 }
 
 .label-item {
   position: absolute;
   left: 0;
   top: 0;
-  padding-left: 20px;
+  padding-left: .4rem;
   color: #000;
-  font-size: 14px;
+  font-size: .28rem;
   display: inline-block;
-  width: 70px;
-  line-height: 40px;
+  width: 1.4rem;
+  line-height: .8rem;
 }
 .form-radio {
   display: inline-block;
-  width: 155px;
+  width: 3.1rem;
   min-width: 60%;
   height: auto;
-  font-size: 14px;
+  font-size: .28rem;
   vertical-align: middle;
   background-color: transparent;
   border: none;
   color: #333333;
-  line-height: 25px;
-  margin: 5px 0 0 70px;
-
-  padding: 5px;
+  line-height: .5rem;
+  margin: .1rem 0 0 1.4rem;
+  padding: .1rem;
   .radio {
-    max-width: 190px;
+    max-width: 3.8rem;
     word-break: break-all;
-    margin-right: 10px;
+    margin-right: .2rem;
     float: left;
     position: relative;
     input[type=radio] {
       position: absolute;
-      top: 5px;
-      width: 16px;
-      height: 16px;
-      border-radius: 16px;
+      top: .1rem;
+      width: .32rem;
+      height: .32rem;
+      border-radius: 50%;
       background-color: #ddd;
     }
     span {
       word-break: break-all;
-      margin-left: 25px;
+      margin-left: .5rem;
     }
   }
 }
 .text-item  {
   outline: none;
-  border-radius: 5px;
-  height: 36px;
-  margin-left: 70px;
+  border-radius: .1rem;
+  height: .72rem;
+  line-height: .72rem;
+  margin-left: 1.4rem;
   box-sizing: border-box;
-  width: 155px;
+  width: 3.1rem;
   min-width: 60%;
-  padding: 4px 6px;
+  padding: .08rem .12rem;
   font-size: 0.28rem;
-  line-height: 36px;
   vertical-align: middle;
   background-color: transparent;
   color: #000000;
   border: none;
+}
+
+.code {
+  margin-top: .1rem;
+  margin-bottom: .3rem;
+  text-align: center;
+}
+.code-number {
+  outline: none;
+  border-radius: .1rem;
+  height: .72rem;
+  line-height: .72rem;
+  box-sizing: border-box;
+  width: 3.1rem;
+  min-width: 50%;
+  padding: .08rem .12rem;
+  font-size: 0.28rem;
+  vertical-align: middle;
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.get-code {
+  padding-left: 0;
+  margin-left: .2rem;
+  background-color: @deColor;
+  height: .72rem;
+  line-height: .72rem;
+  box-sizing: border-box;
+  font-size: .28rem;
+  border-radius: .08rem;
+  display: inline-block;
+  width: 2.4rem;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
 }
 
 // 消息提示框

@@ -102,97 +102,120 @@ var sky = {
     refer: function () {
         var name = 'putIn';
         var type = 1;
+        var click = true;
         $('#app').click(function (ev) {
             var event = ev || window.event;
             var target = event.target || event.srcElement;
             var className = target.className;
             if (className.indexOf(name) !== -1) {
-                var form = $(target).parent().siblings('.refer');
-                var title = $(target).attr('data-title');
-                var refs = sky.ref(form);
-                var arr = form.sky_serializeArray();
-                var bool = true;
-                var type_1 = 1;
-                // 所有
-                var str = '';
-                for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
-                    var item = arr_1[_i];
-                    if (bool === true) {
-                        for (var _a = 0, refs_1 = refs; _a < refs_1.length; _a++) {
-                            var ref = refs_1[_a];
-                            if (item.name === ref.name && ref.must === true) {
-                                if (item.value === '') {
-                                    bool = false;
-                                    type_1 = 3;
-                                    // 类型判断
-                                    str = item.name;
-                                    break;
-                                }
-                                else {
-                                    if (unit.IsEmpty(ref.proof)) {
-                                        // 进行正则校验
-                                        switch (ref.proof) {
-                                            case 'name':
-                                                bool = unit.IsName(item.value);
-                                                str = item.name;
-                                                type_1 = 2;
+                if (click === true) {
+                    // 防止连续点击
+                    click = false;
+                    setTimeout(function () {
+                        click = true;
+                    }, 2000);
+                    var formId_1 = $(target).attr('data-form-id');
+                    var title_1 = $(target).attr('data-title');
+                    var form = $(target).parent().siblings('.refer');
+                    var refs = sky.ref(form);
+                    var arr = form.sky_serializeArray();
+                    // 判断是否已经提交过了
+                    var sub_bool = sessionStorage.getItem(formId_1);
+                    console.log(sub_bool);
+                    if (unit.IsEmpty(sub_bool)) {
+                        // 已经提交过了
+                        sky.pointOut('', 99, title_1);
+                    }
+                    else {
+                        var bool = true;
+                        var type_1 = 1;
+                        // 所有
+                        var str_1 = '';
+                        for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
+                            var item = arr_1[_i];
+                            if (bool === true) {
+                                for (var _a = 0, refs_1 = refs; _a < refs_1.length; _a++) {
+                                    var ref = refs_1[_a];
+                                    if (item.name === ref.name) {
+                                        if (item.value === '') {
+                                            if (ref.must === true) {
+                                                bool = false;
+                                                type_1 = 3;
+                                                // 类型判断
+                                                str_1 = item.name;
                                                 break;
-                                            case 'phone':
-                                                bool = unit.IsPhone(item.value);
-                                                str = item.name;
-                                                type_1 = 2;
-                                                break;
-                                            case 'email':
-                                                bool = unit.IsEmpty(item.value);
-                                                str = item.name;
-                                                type_1 = 2;
-                                                break;
-                                            case 'card':
-                                                bool = unit.IsCard(item.value);
-                                                str = item.name;
-                                                type_1 = 2;
-                                                break;
-                                            default:
-                                                break;
+                                            }
+                                        }
+                                        else {
+                                            if (unit.IsEmpty(ref.proof)) {
+                                                // 进行正则校验
+                                                switch (ref.proof) {
+                                                    case 'name':
+                                                        bool = unit.IsName(item.value);
+                                                        str_1 = item.name;
+                                                        type_1 = 2;
+                                                        break;
+                                                    case 'phone':
+                                                        bool = unit.IsPhone(item.value);
+                                                        str_1 = item.name;
+                                                        type_1 = 2;
+                                                        break;
+                                                    case 'email':
+                                                        bool = unit.IsEmpty(item.value);
+                                                        str_1 = item.name;
+                                                        type_1 = 2;
+                                                        break;
+                                                    case 'card':
+                                                        bool = unit.IsCard(item.value);
+                                                        str_1 = item.name;
+                                                        type_1 = 2;
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
+                                            }
+                                        }
+                                        if (bool === false) {
+                                            break;
                                         }
                                     }
-                                }
-                                if (bool === false) {
-                                    break;
-                                }
-                            }
-                            else if (item.name === ref.name) {
-                                // 不是必填，又没有填写的时候走的逻辑
-                                if (item.value === '') {
-                                    // 类型判断
-                                    break;
-                                }
-                                else {
-                                    if (unit.IsEmpty(ref.proof)) {
-                                        // 进行正则校验
-                                        switch (ref.proof) {
-                                            case 'name':
-                                                bool = unit.IsName(item.value);
-                                                str = item.name;
-                                                type_1 = 2;
-                                                break;
-                                            case 'phone':
-                                                bool = unit.IsPhone(item.value);
-                                                str = item.name;
-                                                type_1 = 2;
-                                                break;
-                                            case 'email':
-                                                bool = unit.IsEmpty(item.value);
-                                                str = item.name;
-                                                type_1 = 2;
-                                                break;
-                                            case 'card':
-                                                bool = unit.IsCard(item.value);
-                                                str = item.name;
-                                                type_1 = 2;
-                                                break;
-                                            default:
-                                                break;
+                                    else if (item.name === ref.name) {
+                                        // 不是必填，又没有填写的时候走的逻辑
+                                        if (item.value === '') {
+                                            // 类型判断
+                                            break;
+                                        }
+                                        else {
+                                            if (unit.IsEmpty(ref.proof)) {
+                                                // 进行正则校验
+                                                switch (ref.proof) {
+                                                    case 'name':
+                                                        bool = unit.IsName(item.value);
+                                                        str_1 = item.name;
+                                                        type_1 = 2;
+                                                        break;
+                                                    case 'phone':
+                                                        bool = unit.IsPhone(item.value);
+                                                        str_1 = item.name;
+                                                        type_1 = 2;
+                                                        break;
+                                                    case 'email':
+                                                        bool = unit.IsEmpty(item.value);
+                                                        str_1 = item.name;
+                                                        type_1 = 2;
+                                                        break;
+                                                    case 'card':
+                                                        bool = unit.IsCard(item.value);
+                                                        str_1 = item.name;
+                                                        type_1 = 2;
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
+                                            }
+                                        }
+                                        if (bool === false) {
+                                            break;
                                         }
                                     }
                                 }
@@ -201,41 +224,45 @@ var sky = {
                                 }
                             }
                         }
+                        // 进行提醒
                         if (bool === false) {
-                            break;
+                            sky.pointOut(str_1, type_1, title_1);
+                        }
+                        else {
+                            // 这里进行表单数据的ajax请求
+                            var $node = $('#none');
+                            var viewId = $node.attr('data-view-id');
+                            var url = '/DiyWebsite/SubmitForm';
+                            var params = {
+                                guid: viewId,
+                                formId: formId_1,
+                                forms: JSON.stringify(arr)
+                            };
+                            $.ajax({
+                                url: url,
+                                method: 'POST',
+                                data: params,
+                                dataType: 'JSON',
+                                success: function (data) {
+                                    if (data.code == 1) {
+                                        // 提交成功，写入session不可重复提交
+                                        sessionStorage.setItem(formId_1, 'yes');
+                                        sky.pointOut(str_1, 1, title_1);
+                                    }
+                                    else {
+                                        sky.pointOut(str_1, 0, title_1);
+                                    }
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                    sky.pointOut(str_1, 0, title_1);
+                                }
+                            });
                         }
                     }
                 }
-                // 进行提醒
-                if (bool === false) {
-                    sky.pointOut(str, type_1, title);
-                }
                 else {
-                    // 这里进行表单数据的ajax请求
-                    var $node = $('#none');
-                    var customId = $node.attr('data-custom-id');
-                    var viewId = $node.attr('data-view-id');
-                    var formId = $(target).attr('data-form-id');
-                    var url = '/getForm';
-                    var params = {
-                        customId: customId,
-                        viewId: viewId,
-                        formId: formId,
-                        forms: arr
-                    };
-                    console.log(params);
-                    // $.ajax({
-                    //   method: 'POST',
-                    //   data: params,
-                    //   dataType: 'JSON',
-                    //   success: function (data) {
-                    //     console.log(data);
-                    //   },
-                    //   error: function (err) {
-                    //     console.log(err);
-                    //   }
-                    // })
-                    sky.pointOut(str, 1, title);
+                    console.log('不可连点');
                 }
             }
         });
@@ -264,6 +291,10 @@ var sky = {
         var icon = "icon-jinggao";
         var tip = "\u8BF7\u8F93\u5165\u6B63\u786E\u7684" + str;
         switch (type) {
+            case 0:
+                icon = "icon-jinggao";
+                tip = "\u63D0\u4EA4\u5931\u8D25";
+                break;
             case 1:
                 icon = "icon-wancheng-copy";
                 tip = "\u63D0\u4EA4\u6210\u529F";
@@ -275,6 +306,10 @@ var sky = {
             case 3:
                 icon = "icon-cuowu";
                 tip = str + "\u4E3A\u5FC5\u586B\u9879";
+                break;
+            case 99:
+                icon = "icon-wancheng-copy";
+                tip = "\u4F60\u5DF2\u7ECF\u63D0\u4EA4\u8FC7\u8868\u5355\u4E86\uFF01";
                 break;
             default:
                 icon = "icon-jinggao";

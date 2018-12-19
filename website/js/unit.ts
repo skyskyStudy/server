@@ -112,6 +112,7 @@ const sky = {
   refer: () => {
     let name = 'putIn';
     let type = 1;
+    let click: boolean = true;
 
     $('#app').click(function (ev) {
       let event = ev || window.event;
@@ -119,138 +120,159 @@ const sky = {
       let target = event.target || event.srcElement;
       let className = target.className;
       if (className.indexOf(name) !== -1) {
-        let form = $(target).parent().siblings('.refer');
-        let title = $(target).attr('data-title');
+        if (click === true) {
+          // 防止连续点击
+          click = false;
 
-        let refs = sky.ref(form);
-        let arr = form.sky_serializeArray();
+          setTimeout(function () {
+            click = true;
+          }, 2000)
 
-        let bool = true;
-        let type = 1;
-        // 所有
-        let str = '';
-
-        for(let item of arr) {
-          if (bool === true) {
-            for (let ref of refs) {
-              if (item.name === ref.name && ref.must === true) {
-                if (item.value === '') {
-                  bool = false;
-                  type = 3;
-                  // 类型判断
-                  str = item.name;
-                  break;
-                } else {
-                  if (unit.IsEmpty(ref.proof)) {
-                    // 进行正则校验
-                    switch (ref.proof) {
-                      case 'name':
-                        bool = unit.IsName(item.value);
-                        str = item.name;
-                        type = 2;
-                        break;
-                      case 'phone':
-                        bool = unit.IsPhone(item.value);
-                        str = item.name;
-                        type = 2;
-                        break;
-                      case 'email':
-                        bool = unit.IsEmpty(item.value);
-                        str = item.name;
-                        type = 2;
-                        break;
-                      case 'card':
-                        bool = unit.IsCard(item.value);
-                        str = item.name;
-                        type = 2;
-                        break;
-                      default:
-                        break;
-                    }
-                  }
-                }
-                if (bool === false) {
-                  break;
-                }
-              }
-              else if (item.name === ref.name) {
-                // 不是必填，又没有填写的时候走的逻辑
-                if (item.value === '') {
-                  // 类型判断
-                  break;
-                } else {
-                  if (unit.IsEmpty(ref.proof)) {
-                    // 进行正则校验
-                    switch (ref.proof) {
-                      case 'name':
-                        bool = unit.IsName(item.value);
-                        str = item.name;
-                        type = 2;
-                        break;
-                      case 'phone':
-                        bool = unit.IsPhone(item.value);
-                        str = item.name;
-                        type = 2;
-                        break;
-                      case 'email':
-                        bool = unit.IsEmpty(item.value);
-                        str = item.name;
-                        type = 2;
-                        break;
-                      case 'card':
-                        bool = unit.IsCard(item.value);
-                        str = item.name;
-                        type = 2;
-                        break;
-                      default:
-                        break;
-                    }
-                  }
-                }
-                if (bool === false) {
-                  break;
-                }
-              }
-            }
-            if (bool === false) {
-              break
-            }
-          }
-        }
-
-        // 进行提醒
-        if (bool === false) {
-          sky.pointOut(str, type, title);
-        } else {
-          // 这里进行表单数据的ajax请求
-          let $node = $('#none');
-          let customId = $node.attr('data-custom-id');
-          let viewId = $node.attr('data-view-id');
           let formId = $(target).attr('data-form-id');
+          let title = $(target).attr('data-title');
+          let form = $(target).parent().siblings('.refer');
+          let refs = sky.ref(form);
+          let arr = form.sky_serializeArray();
 
+          // 判断是否已经提交过了
+          let sub_bool = sessionStorage.getItem(formId);
+          console.log(sub_bool);
+          if (unit.IsEmpty(sub_bool)) {
+            // 已经提交过了
+            sky.pointOut('', 99, title);
+          } else {
+            let bool = true;
+            let type = 1;
+            // 所有
+            let str = '';
+            for(let item of arr) {
+              if (bool === true) {
+                for (let ref of refs) {
+                  if (item.name === ref.name) {
+                    if (item.value === '') {
+                      if (ref.must === true) {
+                        bool = false;
+                        type = 3;
+                        // 类型判断
+                        str = item.name;
+                        break;
+                      }
+                    } else {
+                      if (unit.IsEmpty(ref.proof)) {
+                        // 进行正则校验
+                        switch (ref.proof) {
+                          case 'name':
+                            bool = unit.IsName(item.value);
+                            str = item.name;
+                            type = 2;
+                            break;
+                          case 'phone':
+                            bool = unit.IsPhone(item.value);
+                            str = item.name;
+                            type = 2;
+                            break;
+                          case 'email':
+                            bool = unit.IsEmpty(item.value);
+                            str = item.name;
+                            type = 2;
+                            break;
+                          case 'card':
+                            bool = unit.IsCard(item.value);
+                            str = item.name;
+                            type = 2;
+                            break;
+                          default:
+                            break;
+                        }
+                      }
+                    }
+                    if (bool === false) {
+                      break;
+                    }
+                  }
+                  else if (item.name === ref.name) {
+                    // 不是必填，又没有填写的时候走的逻辑
+                    if (item.value === '') {
+                      // 类型判断
+                      break;
+                    } else {
+                      if (unit.IsEmpty(ref.proof)) {
+                        // 进行正则校验
+                        switch (ref.proof) {
+                          case 'name':
+                            bool = unit.IsName(item.value);
+                            str = item.name;
+                            type = 2;
+                            break;
+                          case 'phone':
+                            bool = unit.IsPhone(item.value);
+                            str = item.name;
+                            type = 2;
+                            break;
+                          case 'email':
+                            bool = unit.IsEmpty(item.value);
+                            str = item.name;
+                            type = 2;
+                            break;
+                          case 'card':
+                            bool = unit.IsCard(item.value);
+                            str = item.name;
+                            type = 2;
+                            break;
+                          default:
+                            break;
+                        }
+                      }
+                    }
+                    if (bool === false) {
+                      break;
+                    }
+                  }
+                }
+                if (bool === false) {
+                  break
+                }
+              }
+            }
 
-          let url = '/getForm';
-          let params = {
-            customId: customId,
-            viewId: viewId,
-            formId: formId,
-            forms: arr
+            // 进行提醒
+            if (bool === false) {
+              sky.pointOut(str, type, title);
+            } else {
+              // 这里进行表单数据的ajax请求
+              let $node = $('#none');
+              let viewId = $node.attr('data-view-id');
+
+              let url = '/DiyWebsite/SubmitForm';
+              let params = {
+                guid: viewId,
+                formId: formId,
+                forms: JSON.stringify(arr)
+              };
+
+              $.ajax({
+                url: url,
+                method: 'POST',
+                data: params,
+                dataType: 'JSON',
+                success: function (data) {
+                  if (data.code == 1) {
+                    // 提交成功，写入session不可重复提交
+                    sessionStorage.setItem(formId, 'yes');
+                    sky.pointOut(str, 1, title);
+                  } else {
+                    sky.pointOut(str, 0, title);
+                  }
+                },
+                error: function (err) {
+                  console.log(err);
+                  sky.pointOut(str, 0, title);
+                }
+              })
+            }
           }
-
-          console.log(params);
-          // $.ajax({
-          //   method: 'POST',
-          //   data: params,
-          //   dataType: 'JSON',
-          //   success: function (data) {
-          //     console.log(data);
-          //   },
-          //   error: function (err) {
-          //     console.log(err);
-          //   }
-          // })
-
-          sky.pointOut(str, 1, title);
+        } else {
+          console.log('不可连点');
         }
       }
     })
@@ -283,6 +305,10 @@ const sky = {
     let tip = `请输入正确的${str}`;
 
     switch (type) {
+      case 0:
+        icon = `icon-jinggao`;
+        tip = `提交失败`;
+        break;
       case 1:
         icon = `icon-wancheng-copy`;
         tip = `提交成功`;
@@ -294,6 +320,10 @@ const sky = {
       case 3:
         icon = `icon-cuowu`;
         tip = `${str}为必填项`;
+        break;
+      case 99:
+        icon = `icon-wancheng-copy`;
+        tip = `你已经提交过表单了！`;
         break;
       default:
         icon = `icon-jinggao`;
