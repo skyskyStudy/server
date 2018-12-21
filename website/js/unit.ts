@@ -103,14 +103,15 @@ const unit = {
       return false;
     }
   }
-
 };
 
 // jquery操作的方法
 const sky = {
-  // 提交
+  // 绑定事件函数
   refer: () => {
-    let name = 'putIn';
+    let submit = 'putIn';
+    let minus = 'minus';
+    let add = 'add';
     let type = 1;
     let click: boolean = true;
 
@@ -118,8 +119,11 @@ const sky = {
       let event = ev || window.event;
 
       let target = event.target || event.srcElement;
+
       let className = target.className;
-      if (className.indexOf(name) !== -1) {
+
+      // 表单提交的
+      if (className.indexOf(submit) !== -1) {
         if (click === true) {
           // 防止连续点击
           click = false;
@@ -132,11 +136,14 @@ const sky = {
           let title = $(target).attr('data-title');
           let form = $(target).parent().siblings('.refer');
           let refs = sky.ref(form);
+          let Tally = form.find('.form-tally');
+          console.log(Tally);
+
           let arr = form.sky_serializeArray();
+          console.log(arr);
 
           // 判断是否已经提交过了
           let sub_bool = sessionStorage.getItem(formId);
-          console.log(sub_bool);
           if (unit.IsEmpty(sub_bool)) {
             // 已经提交过了
             sky.pointOut('', 99, title);
@@ -247,7 +254,7 @@ const sky = {
               let params = {
                 guid: viewId,
                 formId: formId,
-                forms: JSON.stringify(arr)
+                form: JSON.stringify(arr)
               };
 
               $.ajax({
@@ -273,6 +280,36 @@ const sky = {
           }
         } else {
           console.log('不可连点');
+        }
+      }
+      else if (className.indexOf(minus) !== -1)
+      {
+        // 计数减少的
+        let $numInput = $(target).siblings('.tally-item');
+        let num = $numInput.val();
+        let min = parseInt($numInput.attr('data-minNumber'));
+
+        if (num > min) {
+          num --;
+          $numInput.val(num);
+        } else {
+          let str = '最小值为' + min;
+          sky.pointOut(str, 4, '');
+        }
+      }
+      else if (className.indexOf(add) !== -1)
+      {
+        // 计数减少的
+        let $numInput = $(target).siblings('.tally-item');
+        let num = $numInput.val();
+        let max = parseInt($numInput.attr('data-maxNumber'));
+        if (num < max) {
+          num ++;
+          $numInput.val(num);
+        }
+        else {
+          let str = '最大值为' + max;
+          sky.pointOut(str, 4, '');
         }
       }
     })
@@ -321,6 +358,10 @@ const sky = {
         icon = `icon-cuowu`;
         tip = `${str}为必填项`;
         break;
+      case 4:
+        icon = `icon-jinggao`;
+        tip = str;
+        break;
       case 99:
         icon = `icon-wancheng-copy`;
         tip = `你已经提交过表单了！`;
@@ -367,8 +408,6 @@ const sky = {
     })
   }
 }
-
-
 
 window.onload = function () {
   /*

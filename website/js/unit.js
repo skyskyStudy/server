@@ -98,16 +98,19 @@ var unit = {
 };
 // jquery操作的方法
 var sky = {
-    // 提交
+    // 绑定事件函数
     refer: function () {
-        var name = 'putIn';
+        var submit = 'putIn';
+        var minus = 'minus';
+        var add = 'add';
         var type = 1;
         var click = true;
         $('#app').click(function (ev) {
             var event = ev || window.event;
             var target = event.target || event.srcElement;
             var className = target.className;
-            if (className.indexOf(name) !== -1) {
+            // 表单提交的
+            if (className.indexOf(submit) !== -1) {
                 if (click === true) {
                     // 防止连续点击
                     click = false;
@@ -118,10 +121,12 @@ var sky = {
                     var title_1 = $(target).attr('data-title');
                     var form = $(target).parent().siblings('.refer');
                     var refs = sky.ref(form);
+                    var Tally = form.find('.form-tally');
+                    console.log(Tally);
                     var arr = form.sky_serializeArray();
+                    console.log(arr);
                     // 判断是否已经提交过了
                     var sub_bool = sessionStorage.getItem(formId_1);
-                    console.log(sub_bool);
                     if (unit.IsEmpty(sub_bool)) {
                         // 已经提交过了
                         sky.pointOut('', 99, title_1);
@@ -236,7 +241,7 @@ var sky = {
                             var params = {
                                 guid: viewId,
                                 formId: formId_1,
-                                forms: JSON.stringify(arr)
+                                form: JSON.stringify(arr)
                             };
                             $.ajax({
                                 url: url,
@@ -263,6 +268,34 @@ var sky = {
                 }
                 else {
                     console.log('不可连点');
+                }
+            }
+            else if (className.indexOf(minus) !== -1) {
+                // 计数减少的
+                var $numInput = $(target).siblings('.tally-item');
+                var num = $numInput.val();
+                var min = parseInt($numInput.attr('data-minNumber'));
+                if (num > min) {
+                    num--;
+                    $numInput.val(num);
+                }
+                else {
+                    var str = '最小值为' + min;
+                    sky.pointOut(str, 4, '');
+                }
+            }
+            else if (className.indexOf(add) !== -1) {
+                // 计数减少的
+                var $numInput = $(target).siblings('.tally-item');
+                var num = $numInput.val();
+                var max = parseInt($numInput.attr('data-maxNumber'));
+                if (num < max) {
+                    num++;
+                    $numInput.val(num);
+                }
+                else {
+                    var str = '最大值为' + max;
+                    sky.pointOut(str, 4, '');
                 }
             }
         });
@@ -306,6 +339,10 @@ var sky = {
             case 3:
                 icon = "icon-cuowu";
                 tip = str + "\u4E3A\u5FC5\u586B\u9879";
+                break;
+            case 4:
+                icon = "icon-jinggao";
+                tip = str;
                 break;
             case 99:
                 icon = "icon-wancheng-copy";
