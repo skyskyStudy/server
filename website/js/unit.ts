@@ -2,7 +2,7 @@ declare const $:any;
 declare const jQuery:any;
 
 // 常量
-const NAME_REG = /^[\u4E00-\u9FA5]{2,4}$/
+const NAME_REG = /^[\u4E00-\u9FA5]{2,6}$/
 const PHONE_REG = /^1(3|4|5|7|8)\d{9}$/
 const EMAIL_REG = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
 const CARD_REG = /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[XxYy])$)$/;
@@ -115,6 +115,7 @@ const sky = {
     let type = 1;
     let click: boolean = true;
 
+    // 绑定点击事件
     $('#app').click(function (ev) {
       let event = ev || window.event;
 
@@ -137,7 +138,6 @@ const sky = {
           let form = $(target).parent().siblings('.refer');
           let refs = sky.ref(form);
           let Tally = form.find('.form-tally');
-          console.log(Tally);
 
           let arr = form.sky_serializeArray();
           console.log(arr);
@@ -286,14 +286,14 @@ const sky = {
       {
         // 计数减少的
         let $numInput = $(target).siblings('.tally-item');
-        let num = $numInput.val();
+        let num = parseInt($numInput.val());
         let min = parseInt($numInput.attr('data-minNumber'));
 
         if (num > min) {
           num --;
           $numInput.val(num);
         } else {
-          let str = '最小值为' + min;
+          let str = '该选项最小值为' + min;
           sky.pointOut(str, 4, '');
         }
       }
@@ -308,11 +308,36 @@ const sky = {
           $numInput.val(num);
         }
         else {
-          let str = '最大值为' + max;
+          let str = '该选项最大值为' + max;
           sky.pointOut(str, 4, '');
         }
       }
     })
+
+    // 绑定input事件
+    $('.tally-item').change(function (ev) {
+      let event = ev || window.event;
+      let target = event.target || event.srcElement;
+      let className = target.className;
+      console.log(className);
+      if (className.indexOf('tally-item') !== 1) {
+        let num = $(target).val();
+        let min = parseInt($(target).attr('data-minNumber'));
+        let max = parseInt($(target).attr('data-maxNumber'));
+
+        if (num < min) {
+          let str = '该选项最小值为' + min;
+          sky.pointOut(str, 4, '');
+          $(target).val(min);
+        }
+        else if (num > max) {
+          let str = '该选项最大值为' + max;
+          sky.pointOut(str, 4, '');
+          $(target).val(max);
+        }
+      }
+    })
+
   },
 
   // 返回不能为空的label

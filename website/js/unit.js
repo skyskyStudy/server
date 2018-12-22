@@ -1,5 +1,5 @@
 // 常量
-var NAME_REG = /^[\u4E00-\u9FA5]{2,4}$/;
+var NAME_REG = /^[\u4E00-\u9FA5]{2,6}$/;
 var PHONE_REG = /^1(3|4|5|7|8)\d{9}$/;
 var EMAIL_REG = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 var CARD_REG = /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[XxYy])$)$/;
@@ -105,6 +105,7 @@ var sky = {
         var add = 'add';
         var type = 1;
         var click = true;
+        // 绑定点击事件
         $('#app').click(function (ev) {
             var event = ev || window.event;
             var target = event.target || event.srcElement;
@@ -122,7 +123,6 @@ var sky = {
                     var form = $(target).parent().siblings('.refer');
                     var refs = sky.ref(form);
                     var Tally = form.find('.form-tally');
-                    console.log(Tally);
                     var arr = form.sky_serializeArray();
                     console.log(arr);
                     // 判断是否已经提交过了
@@ -273,14 +273,14 @@ var sky = {
             else if (className.indexOf(minus) !== -1) {
                 // 计数减少的
                 var $numInput = $(target).siblings('.tally-item');
-                var num = $numInput.val();
+                var num = parseInt($numInput.val());
                 var min = parseInt($numInput.attr('data-minNumber'));
                 if (num > min) {
                     num--;
                     $numInput.val(num);
                 }
                 else {
-                    var str = '最小值为' + min;
+                    var str = '该选项最小值为' + min;
                     sky.pointOut(str, 4, '');
                 }
             }
@@ -294,8 +294,30 @@ var sky = {
                     $numInput.val(num);
                 }
                 else {
-                    var str = '最大值为' + max;
+                    var str = '该选项最大值为' + max;
                     sky.pointOut(str, 4, '');
+                }
+            }
+        });
+        // 绑定input事件
+        $('.tally-item').change(function (ev) {
+            var event = ev || window.event;
+            var target = event.target || event.srcElement;
+            var className = target.className;
+            console.log(className);
+            if (className.indexOf('tally-item') !== 1) {
+                var num = $(target).val();
+                var min = parseInt($(target).attr('data-minNumber'));
+                var max = parseInt($(target).attr('data-maxNumber'));
+                if (num < min) {
+                    var str = '该选项最小值为' + min;
+                    sky.pointOut(str, 4, '');
+                    $(target).val(min);
+                }
+                else if (num > max) {
+                    var str = '该选项最大值为' + max;
+                    sky.pointOut(str, 4, '');
+                    $(target).val(max);
                 }
             }
         });

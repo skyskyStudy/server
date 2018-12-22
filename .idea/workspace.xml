@@ -4,15 +4,6 @@
     <list default="true" id="8a3762cf-00c2-4665-b154-151f492bc40d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/font/demo_fontclass.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/font/demo_fontclass.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/font/demo_symbol.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/font/demo_symbol.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/font/demo_unicode.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/font/demo_unicode.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/font/iconfont.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/font/iconfont.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/font/iconfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/website/font/iconfont.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/font/iconfont.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/font/iconfont.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/font/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/website/font/iconfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/font/iconfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/website/font/iconfont.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/font/iconfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/website/font/iconfont.woff" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/js/unit.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/js/unit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/js/unit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/website/js/unit.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/style/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/style/index.css" afterDir="false" />
@@ -30,10 +21,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.43601894">
+    <splitter split-orientation="horizontal" split-proportion="0.5328885">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="unit.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/website/js/unit.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="455">
+                  <caret line="289" column="60" selection-start-line="289" selection-start-column="60" selection-end-line="290" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="441">
@@ -51,7 +51,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.less" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.less" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/website/style/index.less">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="357">
@@ -60,24 +60,15 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="unit.ts" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/website/js/unit.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="518">
-                  <caret line="360" column="13" lean-forward="true" selection-start-line="360" selection-start-column="13" selection-end-line="360" selection-end-column="13" />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="unit.ts" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/website/js/unit.ts">
+        <leaf>
+          <file leaf-file-name="index.less" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/website/style/index.less">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="250" column="18" lean-forward="true" selection-start-line="250" selection-start-column="18" selection-end-line="250" selection-end-column="18" />
+                <state relative-caret-position="310">
+                  <caret line="347" column="26" selection-start-line="347" selection-start-column="26" selection-end-line="347" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
@@ -97,10 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>rbracket</find>
-      <find>rsubmitterTypes</find>
-      <find>rcheckableType</find>
-      <find>判空</find>
       <find>refer</find>
       <find>customN</find>
       <find>customTitle</find>
@@ -121,12 +108,16 @@
       <find>.code</find>
       <find>sessionStorage</find>
       <find>title</find>
-      <find>conso</find>
       <find>sky_serializeArray</find>
       <find>0 1.4rem</find>
       <find>pointOut</find>
       <find>refs</find>
       <find>ajax</find>
+      <find>PHONE_REG</find>
+      <find>PROOF_TYPE</find>
+      <find>conso</find>
+      <find>view-</find>
+      <find>label-content</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -150,8 +141,8 @@
         <option value="$PROJECT_DIR$/style/index.less" />
         <option value="$PROJECT_DIR$/website/js/confi.js" />
         <option value="$PROJECT_DIR$/website/js/sky.ts" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/website/js/unit.ts" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/website/style/index.less" />
       </list>
     </option>
@@ -269,27 +260,30 @@
       <workItem from="1545204942550" duration="1317000" />
       <workItem from="1545379380785" duration="604000" />
       <workItem from="1545380954488" duration="5925000" />
+      <workItem from="1545391046044" duration="362000" />
+      <workItem from="1545391762079" duration="600000" />
+      <workItem from="1545445800031" duration="8556000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93771000" />
+    <option name="totallyTimeSpent" value="103289000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="11" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.07083333" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20416667" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32875264" />
       <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32769555" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -585,6 +579,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/js/sky.ts" />
+    <entry file="file://$PROJECT_DIR$/website/js/unit.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="289" column="60" selection-start-line="289" selection-start-column="60" selection-end-line="290" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
@@ -603,15 +604,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/style/index.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/js/unit.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="250" column="18" lean-forward="true" selection-start-line="250" selection-start-column="18" selection-end-line="250" selection-end-column="18" />
+        <state relative-caret-position="310">
+          <caret line="347" column="26" selection-start-line="347" selection-start-column="26" selection-end-line="347" selection-end-column="26" />
         </state>
       </provider>
     </entry>
